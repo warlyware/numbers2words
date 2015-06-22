@@ -15,7 +15,7 @@
       <div class="well row">
         <h1 class="text-center">Numbers 2 Words</h1><br>
         <div class="col-xs-4 col-xs-offset-4">
-          <form ng-submit="processNumber()" name="inputForm" novalidate>
+          <form ng-submit="processWords(numberInput)" name="inputForm" novalidate>
             <div class="input-group" ng-class="{ 'has-error': inputForm.numberInput.$invalid }">
               <input type="text"
                       name="numberInput"
@@ -23,15 +23,16 @@
                       pattern="[\d -]+"
                       id="number-input"
                       ng-model="numberInput" required>
-              <span class="input-group-btn"><button type="submit" class="btn btn-success">Submit</button></span>
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-success" ng-disabled="!inputForm.numberInput.$valid">Submit</button>
+              </span>
             </div>
-            {{inputForm.numberInput.$valid}}
           </form>
         </div>
       </div>
       <div class="row">
           <div class="number-card col-xs-3" ng-repeat="word in words">
-            <div class="letters">{{word.text}}</div>
+            <div class="letters">{{word}}</div>
           </div>
       </div>
     </div>    
