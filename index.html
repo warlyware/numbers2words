@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="N2WApp">
+
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div class="container" ng-controller="N2WCtrl">
+      <div class="well row">
+        <h1 class="text-center">Numbers 2 Words</h1><br>
+        <div class="col-xs-4 col-xs-offset-4">
+          <form>
+            <div class="input-group">
+              <input type="number" class="form-control" id="number-input" ng-model="wordInput" require>
+              <span class="input-group-btn"><button class="btn btn-success center-block" ng-submit="processWord()">Search</button></span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+          <div class="number-card col-xs-3" ng-repeat="word in words">
+            <div class="letters">{{word.text}}</div>
+          </div>
+      </div>
+    </div>    
+
+
+    <script src="script.js"></script>
+  </body>
+
+</html>
