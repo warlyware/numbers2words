@@ -15,11 +15,17 @@
       <div class="well row">
         <h1 class="text-center">Numbers 2 Words</h1><br>
         <div class="col-xs-4 col-xs-offset-4">
-          <form>
-            <div class="input-group">
-              <input type="number" class="form-control" id="number-input" ng-model="wordInput" require>
-              <span class="input-group-btn"><button class="btn btn-success center-block" ng-submit="processWord()">Search</button></span>
+          <form ng-submit="processNumber()" name="inputForm" novalidate>
+            <div class="input-group" ng-class="{ 'has-error': inputForm.numberInput.$invalid }">
+              <input type="text"
+                      name="numberInput"
+                      class="form-control"
+                      pattern="[\d -]+"
+                      id="number-input"
+                      ng-model="numberInput" required>
+              <span class="input-group-btn"><button type="submit" class="btn btn-success">Submit</button></span>
             </div>
+            {{inputForm.numberInput.$valid}}
           </form>
         </div>
       </div>

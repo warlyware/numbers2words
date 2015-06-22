@@ -20,8 +20,28 @@ function N2WCtrl($scope) {
     {text: "WORD4"}
   ];
 
-  $scope.processWord = function() {
-    
+  $scope.numberInput = '';
+
+  $scope.validateInput = function() {
+    $scope.invalidInput = !$scope.numberInput.match(/^[\d -]+$/);
+  }
+
+
+
+  $scope.processNumber = function() {
+    var outputWord = [];
+    for (var i = 1; i < $scope.numberInput.length + 1; i++) {
+      for (var j = 0; j < $scope.letterSets[i].length; j++) {
+        console.log($scope.letterSets[i][j]);
+        outputWord[j] = $scope.letterSets[i][j];
+      }
+
+    }
+    console.log(outputWord);
+
+
+    $scope.words.push({ text: $scope.numberInput });
+    // console.log($scope.words);
   }
 
 }
