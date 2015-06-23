@@ -1,6 +1,6 @@
 var app = angular.module('N2WApp', []);
 
-function N2WCtrl($scope) {
+function N2WCtrl($scope, $sce) {
 
   var PERMS = {
     allCases: {
@@ -43,7 +43,14 @@ function N2WCtrl($scope) {
   };
 
   $scope.processWords = function(numberString) {
-    $scope.words = PERMS.calculate(numberString);
+    $scope.words = PERMS.calculate(numberString)
+          .filter(function(e) {
+            return !e.match(/[a-z][0-9]+[a-z]/);
+          })
+          .map(function(e) {
+            return { text: e, html: $sce.trustAsHtml(e.replace(/([a-z]+)/g, '<span>$1</span>')) };
+          });
+
   }
 
 }

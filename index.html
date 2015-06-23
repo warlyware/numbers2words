@@ -31,12 +31,11 @@
         </div>
       </div>
       <div class="row">
-          <div class="number-card col-xs-3" ng-repeat="word in words">
-            <div class="letters">{{word}}</div>
-          </div>
+        <div class="number-card col-xs-3" ng-repeat="word in words">
+          <div class="letters" ng-bind-html="word.html"></div>
+        </div>
       </div>
-    </div>    
-
+    </div>
 
     <script src="script.js"></script>
   </body>
