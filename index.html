@@ -13,10 +13,10 @@
 
     <div class="container" ng-controller="N2WCtrl">
       <div class="well row">
-        <h1 class="text-center">Numbers 2 Words</h1><br>
-        <div class="col-xs-4 col-xs-offset-4">
-          <form ng-submit="processWords(numberInput)" name="inputForm" novalidate>
-            <div class="input-group" ng-class="{ 'has-error': inputForm.numberInput.$invalid }">
+        <div class="col-xs-4 col-xs-offset-1">
+          <h2 class="text-center">Numbers 2 Words</h2><br>
+          <form ng-submit="produceWords(numberInput)" name="numberInputForm" novalidate>
+            <div class="input-group" ng-class="{ 'has-error': numberInputForm.numberInput.$invalid }">
               <input type="text"
                       name="numberInput"
                       class="form-control"
@@ -24,14 +24,40 @@
                       id="number-input"
                       ng-model="numberInput" required>
               <span class="input-group-btn">
-                <button type="submit" class="btn btn-success" ng-disabled="!inputForm.numberInput.$valid">Submit</button>
+                <button type="submit" class="btn btn-success" ng-disabled="!numberInputForm.numberInput.$valid">Submit</button>
               </span>
             </div>
           </form>
+          <form>
+            <br>
+            <input type="text" class="form-control center-block" ng-model="resultsSearch" placeholder="Filter Results">
+          </form>
+        </div>
+        <div class="col-xs-4 col-xs-offset-2">
+          <h2 class="text-center">Words 2 Numbers</h2><br>
+          <form ng-submit="produceNumbers(wordInput)" name="wordInputForm" novalidate>
+            <div class="input-group" ng-class="{ 'has-error': wordInputForm.wordInput.$invalid }">
+              <input type="text"
+                      name="wordInput"
+                      class="form-control"
+                      id="word-input"
+                      ng-model="wordInput" required>
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-success" ng-disabled="!wordInputForm.wordInput.$valid">Submit</button>
+              </span>
+            </div>
+          </form>
+          <br>
+          <div class="number-result">
+            Numbers: {{numbers}}
+          </div>
+        </div>
+        <div class="col-xs-4 col-xs-offset-4">
+
         </div>
       </div>
       <div class="row">
-        <div class="number-card col-xs-3" ng-repeat="word in words">
+        <div class="number-card col-xs-3" ng-repeat="word in words | filter:resultsSearch">
           <div class="letters" ng-bind-html="word.html"></div>
         </div>
       </div>

@@ -30,6 +30,16 @@ button {
   box-shadow: 10px 10px 24px 2px rgba(0,0,0,0.6);
 }
 
+.number-result {
+  background-color: grey;
+  color: white;
+  font-size: 1.1em;
+  margin-top: -2px;
+  padding: 8px;
+  padding-left: 15px;
+  border-radius: 10px;
+}
+
 .letters {
   margin-top: 20px;
 }
